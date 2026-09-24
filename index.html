@@ -197,6 +197,52 @@ h1{font-size:30px;line-height:1.1;font-weight:700}
 .tl-note{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dnote{width:100%;min-height:84px;resize:vertical;font:inherit;font-size:15px;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:11px 12px}
 .lnks{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;font-size:13px}
+.cd{position:relative}
+.cd.conf::after{content:'';position:absolute;top:5px;right:6px;width:7px;height:7px;border-radius:50%;background:var(--danger)}
+.tl-ev.bad{box-shadow:0 0 0 2px var(--danger)}
+.cf{color:var(--danger);font-weight:700}
+.agseg2{margin:-4px 0 12px}
+.gw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface);-webkit-overflow-scrolling:touch}
+.gt{min-width:100%}
+.gr{display:flex;border-top:1px solid var(--line)}
+.gr:first-child{border-top:0}
+.gl{flex:none;width:112px;position:sticky;left:0;z-index:2;background:var(--surface);border:0;border-right:1px solid var(--line);padding:8px 10px;text-align:left;display:flex;flex-direction:column;justify-content:center;gap:2px;font-size:12.5px;font-weight:600;color:var(--text)}
+.gl span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.25}
+.gl small{color:var(--muted);font-weight:500;font-size:11.5px}
+.gk{flex:1;position:relative;min-height:40px}
+.gk.grid{background-image:linear-gradient(to right,var(--line) 1px,transparent 1px);background-size:calc(100% / var(--n)) 100%}
+.gk.cells{display:flex}
+.gk.bars{height:120px}
+.gk.ticks{height:26px;min-height:26px}
+.gtick{position:absolute;top:6px;transform:translateX(-50%);font-size:10.5px;color:var(--muted)}
+.gcell{flex:1 0 0;min-width:0;border-left:1px solid transparent;text-align:center;font-size:10px;color:var(--muted);padding:6px 0 5px;display:flex;flex-direction:column;gap:1px}
+.gcell:first-child{border-left:0}
+.gcell b{font-size:12.5px;color:var(--text);font-weight:600}
+.gcell.today b{color:var(--accent)}
+.vb{flex:1 0 0;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;padding:6px 0;background:none;border:0;border-left:1px solid var(--line)}
+.vb:first-child{border-left:0}
+.vb.today{background:var(--accent-soft)}
+.vtot{font-size:10.5px;color:var(--muted);font-weight:600}
+.vflag{width:15px;height:15px;border-radius:50%;background:var(--danger);color:#fff;font-size:10px;font-weight:800;line-height:15px;text-align:center;font-style:normal}
+.vstack{display:flex;flex-direction:column;width:68%;max-width:20px;border-radius:5px;overflow:hidden}
+.vstack i{display:block;width:100%}
+.gbar{position:absolute;top:10px;height:20px;border-radius:7px;background:var(--c);display:block;min-width:4px;overflow:hidden}
+.gbar.full{left:6px;right:6px;width:auto}
+.gbar.off{background:transparent;border:2px dashed var(--c)}
+.gbar.dim{opacity:.4}
+.gbar.bad{box-shadow:0 0 0 2px var(--danger);overflow:visible}
+.gbar b{position:absolute;left:0;top:0;bottom:0;background:rgba(0,0,0,.3)}
+.gr.sep .gl{background:var(--surface2);font-size:11.5px;color:var(--muted);font-weight:700}
+.gr.sep .gk{background:var(--surface2);min-height:0}
+.cwarn{background:color-mix(in srgb,var(--danger) 12%,var(--surface));border:1px solid color-mix(in srgb,var(--danger) 45%,var(--line));border-radius:14px;padding:12px 14px;margin:10px 0}
+.cwarn b{display:block;margin-bottom:4px;font-size:14px}
+.cwarn ul{margin:0;padding-left:18px;font-size:13px}
+.cwarn li{margin:3px 0}
+.cwarn .link{margin-top:6px}
+.cok{background:color-mix(in srgb,var(--ok) 13%,var(--surface));border:1px solid color-mix(in srgb,var(--ok) 40%,var(--line));border-radius:14px;padding:10px 14px;font-size:13.5px;margin:10px 0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin:2px 0 10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend span::before{content:'';width:10px;height:10px;border-radius:3px;background:var(--c)}
 .agseg{margin-bottom:12px}
 .dayblk{margin-bottom:14px}
 .dayblk-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;width:100%;background:none;border:0;padding:6px 2px;text-align:left}
@@ -364,7 +410,7 @@ var I={
 /* ================= state ================= */
 var S=blank();
 var storageOk=true,DL=null;
-var UI={tab:'home',taskDay:TODAY(),habitMonth:TODAY().slice(0,7),agMonth:TODAY().slice(0,7),agDay:TODAY(),noteDay:TODAY(),agView:'month',agFocus:false,rcView:'day',rcDay:TODAY(),
+var UI={tab:'home',taskDay:TODAY(),habitMonth:TODAY().slice(0,7),agMonth:TODAY().slice(0,7),agDay:TODAY(),noteDay:TODAY(),agView:'month',agFocus:false,agScale:'week',rcView:'day',rcDay:TODAY(),
   q:'',fGoal:'',fStatus:'',sheet:null,sheetData:null,gridReset:true,pendingRender:false};
 var origTheme=document.documentElement.getAttribute('data-theme');
 
@@ -975,14 +1021,14 @@ function addButtons(d){
   return '<div class="actions"><button class="btn primary" data-act="newEvent" data-date="'+d+'">Tambah acara</button><button class="btn ghost" data-act="newTask" data-date="'+d+'">Tambah tugas</button></div>';
 }
 function agHeader(v){
-  var td=TODAY(),label,isNow,noun;
-  if(v==='month'){var a=UI.agMonth.split('-').map(Number);label=MONTHS[a[1]-1]+' '+a[0];isNow=UI.agMonth===td.slice(0,7);noun='bulan ini'}
-  else if(v==='week'){
-    var ws=weekStart(UI.agDay),da=pd(ws),db=pd(addDays(ws,6));
-    label=da.getMonth()===db.getMonth()?da.getDate()+'–'+db.getDate()+' '+MONTHS[da.getMonth()]+' '+da.getFullYear():da.getDate()+' '+MON3[da.getMonth()]+' – '+db.getDate()+' '+MON3[db.getMonth()]+' '+db.getFullYear();
+  var td=TODAY(),vv=(v==='chart')?(UI.agScale||'week'):v,label,isNow,noun;
+  if(vv==='month'){var a=UI.agMonth.split('-').map(Number);label=MONTHS[a[1]-1]+' '+a[0];isNow=UI.agMonth===td.slice(0,7);noun='bulan ini'}
+  else if(vv==='week'){
+    var ws=weekStart(UI.agDay);label=rangeLabel(ws,addDays(ws,6));
     isNow=ws===weekStart(td);noun='minggu ini';
   }else{label=fmtLong(UI.agDay);isNow=UI.agDay===td;noun='hari ini'}
-  var h='<div class="seg agseg" role="group" aria-label="Tampilan agenda">'+[['month','Bulan'],['week','Minggu'],['day','Hari']].map(function(o){return '<button data-act="agView" data-v="'+o[0]+'" aria-pressed="'+(v===o[0])+'">'+o[1]+'</button>'}).join('')+'</div>';
+  var h='<div class="seg agseg" role="group" aria-label="Tampilan agenda">'+[['month','Bulan'],['week','Minggu'],['day','Hari'],['chart','Bagan']].map(function(o){return '<button data-act="agView" data-v="'+o[0]+'" aria-pressed="'+(v===o[0])+'">'+o[1]+'</button>'}).join('')+'</div>';
+  if(v==='chart')h+='<div class="seg agseg2" role="group" aria-label="Skala bagan">'+[['day','Per jam'],['week','Per minggu'],['month','Per bulan']].map(function(o){return '<button data-act="agScale" data-v="'+o[0]+'" aria-pressed="'+(vv===o[0])+'">'+o[1]+'</button>'}).join('')+'</div>';
   h+='<div class="nav"><button class="icon-btn" data-act="aNav" data-n="-1" aria-label="Sebelumnya">'+I.left+'</button><strong>'+label+'</strong><button class="icon-btn" data-act="aNav" data-n="1" aria-label="Berikutnya">'+I.right+'</button></div>';
   if(!isNow)h+='<div style="text-align:center;margin:-6px 0 10px"><button class="link" data-act="agToday">Kembali ke '+noun+'</button></div>';
   return h;
@@ -996,11 +1042,13 @@ function agMonthBody(){
     var dots=[];
     eventsOn(c).forEach(function(e){dots.push(col(e.color))});
     tasksOn(c).forEach(function(t){dots.push(t.done?'var(--muted)':(goalColor(t)||'var(--accent)'))});
-    h+='<button class="cd'+(c.slice(0,7)!==ym?' other':'')+(c===td?' today':'')+(c===UI.agDay?' sel':'')+'" data-act="agSel" data-date="'+c+'" aria-pressed="'+(c===UI.agDay)+'" aria-label="'+fmtLong(c)+'"><span>'+pd(c).getDate()+'</span><span class="dots">'+dots.slice(0,4).map(function(x){return '<i class="dot" style="--c:'+x+'"></i>'}).join('')+'</span></button>';
+    var cfl=conflictPairs(timedItems(c)).length;
+    h+='<button class="cd'+(cfl?' conf':'')+(c.slice(0,7)!==ym?' other':'')+(c===td?' today':'')+(c===UI.agDay?' sel':'')+'" data-act="agSel" data-date="'+c+'" aria-pressed="'+(c===UI.agDay)+'" aria-label="'+fmtLong(c)+(cfl?', ada bentrokan jadwal':'')+'"><span>'+pd(c).getDate()+'</span><span class="dots">'+dots.slice(0,4).map(function(x){return '<i class="dot" style="--c:'+x+'"></i>'}).join('')+'</span></button>';
   });
   h+='</div>';
   var items=dayItems(UI.agDay);
   h+=secHead(fmtDay(UI.agDay),'Lihat rincian hari','agOpenDay',' data-date="'+UI.agDay+'"');
+  h+=conflictBanner(UI.agDay);
   h+=items.length?'<div class="list">'+items.map(itemRow).join('')+'</div>':'<div class="empty"><p>Belum ada rencana di tanggal ini.</p></div>';
   return h+dayNoteBlock(UI.agDay)+addButtons(UI.agDay);
 }
@@ -1010,6 +1058,7 @@ function agWeekBody(){
     var d=addDays(ws,i),items=dayItems(d);
     var ne=items.filter(function(x){return x.k==='e'}).length,nt=items.length-ne;
     var sum=items.length?(ne?ne+' acara':'')+(ne&&nt?', ':'')+(nt?nt+' tugas':''):'Tidak ada rencana';
+    var ncf=conflictPairs(timedItems(d)).length;if(ncf)sum+=' <span class="cf">'+ncf+' bentrok</span>';
     h+='<section class="dayblk'+(d===td?' today':'')+'"><button class="dayblk-h" data-act="agOpenDay" data-date="'+d+'" aria-label="Buka rincian '+fmtDay(d)+'"><b>'+fmtDay(d)+'</b><small>'+sum+'</small></button>'+(items.length?'<div class="list">'+items.map(itemRow).join('')+'</div>':'')+'</section>';
   }
   return h+addButtons(UI.agDay);
@@ -1039,23 +1088,24 @@ function timeline(d){
   var minS=Math.min.apply(null,items.map(function(x){return x.s})),maxE=Math.max.apply(null,items.map(function(x){return x.e}));
   var h0=Math.max(0,Math.min(6,Math.floor(minS/60))),h1=Math.min(24,Math.max(22,Math.ceil(maxE/60))),PX=56;
   layoutItems(items);
+  var badSet={};conflictPairs(items).forEach(function(p){badSet[p[0].k+p[0].o.id]=1;badSet[p[1].k+p[1].o.id]=1});
   var rows='';
   for(var hh=h0;hh<h1;hh++)rows+='<div class="tl-row"><span>'+pad(hh)+':00</span></div>';
   var blocks=items.map(function(it){
     var hpx=Math.max(28,(it.e-it.s)/60*PX-2),w=100/it.n,st='top:'+((it.s-h0*60)/60*PX)+'px;height:'+Math.max(28,(it.e-it.s)/60*PX-2)+'px;left:calc('+(it.col*w)+'% + 1px);width:calc('+w+'% - 3px)';
     if(it.k==='e'){
       var e=it.o;
-      return '<button class="tl-ev" style="--c:'+col(e.color)+';'+st+'" data-act="editEvent" data-id="'+e.id+'" data-date="'+e.date+'"><b>'+esc(e.title)+'</b><span>'+esc(e.start)+(e.end?'–'+esc(e.end):'')+'</span>'+(e.note&&hpx>=50?'<span class="tl-note">'+esc(firstLine(e.note))+'</span>':'')+'</button>';
+      return '<button class="tl-ev'+(badSet[it.k+e.id]?' bad':'')+'" style="--c:'+col(e.color)+';'+st+'" data-act="editEvent" data-id="'+e.id+'" data-date="'+e.date+'"><b>'+esc(e.title)+'</b><span>'+esc(e.start)+(e.end?'–'+esc(e.end):'')+'</span>'+(e.note&&hpx>=50?'<span class="tl-note">'+esc(firstLine(e.note))+'</span>':'')+'</button>';
     }
     var t=it.o;
-    return '<div class="tl-ev tl-task'+(t.done?' done':'')+'" style="--c:'+(goalColor(t)||'var(--accent)')+';'+st+'"><button class="chk mini'+(t.done?' on':'')+'" data-act="toggleTask" data-id="'+t.id+'" data-date="'+t.date+'" aria-pressed="'+(!!t.done)+'" aria-label="Selesai: '+esc(t.title)+'"></button><button class="tl-t" data-act="editTask" data-id="'+t.id+'" data-date="'+t.date+'"><b>'+esc(t.title)+'</b><span>'+esc(t.time)+'</span>'+(t.note&&hpx>=50?'<span class="tl-note">'+esc(firstLine(t.note))+'</span>':'')+'</button></div>';
+    return '<div class="tl-ev tl-task'+(t.done?' done':'')+(badSet[it.k+t.id]?' bad':'')+'" style="--c:'+(goalColor(t)||'var(--accent)')+';'+st+'"><button class="chk mini'+(t.done?' on':'')+'" data-act="toggleTask" data-id="'+t.id+'" data-date="'+t.date+'" aria-pressed="'+(!!t.done)+'" aria-label="Selesai: '+esc(t.title)+'"></button><button class="tl-t" data-act="editTask" data-id="'+t.id+'" data-date="'+t.date+'"><b>'+esc(t.title)+'</b><span>'+esc(t.time)+'</span>'+(t.note&&hpx>=50?'<span class="tl-note">'+esc(firstLine(t.note))+'</span>':'')+'</button></div>';
   }).join('');
   var now='',n=new Date(),nm=n.getHours()*60+n.getMinutes();
   if(d===TODAY()&&nm>=h0*60&&nm<h1*60)now='<div class="tl-now" style="top:'+((nm-h0*60)/60*PX)+'px"></div>';
   return '<div class="tl" id="tl" data-h0="'+h0+'" data-first="'+minS+'" style="height:'+((h1-h0)*PX)+'px">'+rows+'<div class="tl-body">'+blocks+'</div>'+now+'</div>';
 }
 function agDayBody(){
-  var d=UI.agDay,items=dayItems(d),flat=items.filter(function(x){return !x.t}),h='';
+  var d=UI.agDay,items=dayItems(d),flat=items.filter(function(x){return !x.t}),h=conflictBanner(d);
   if(flat.length)h+=secHead('Seharian dan tanpa jam','','')+'<div class="list">'+flat.map(itemRow).join('')+'</div>';
   var tl=timeline(d);
   if(tl){
@@ -1066,9 +1116,135 @@ function agDayBody(){
   if(!items.length)h+='<div class="empty"><p>Belum ada rencana di hari ini.</p></div>';
   return h+dayNoteBlock(d)+addButtons(d);
 }
+/* ---------- bentrok & bagan ---------- */
+var hhmm=function(m){return pad(Math.floor(m/60))+':'+pad(m%60)};
+function timedItems(d){
+  var items=[];
+  eventsOn(d).forEach(function(e){
+    var s=tm(e.start);if(s==null)return;
+    var en=tm(e.end),ex=en!=null&&en>s;
+    if(en==null)en=s+60;if(en<=s)en=s+30;
+    items.push({k:'e',o:e,s:s,e:en,txt:e.start+(ex?'–'+e.end:'')});
+  });
+  tasksOn(d).forEach(function(t){
+    if(t.endDate&&!t.repeat)return;
+    var s=tm(t.time);if(s==null)return;
+    items.push({k:'t',o:t,s:s,e:s+30,txt:t.time});
+  });
+  return items.sort(function(a,b){return a.s-b.s||a.e-b.e});
+}
+function conflictPairs(items){
+  var it=items.filter(function(x){return !(x.k==='t'&&x.o.done)}).sort(function(a,b){return a.s-b.s||a.e-b.e}),out=[];
+  for(var i=0;i<it.length;i++)for(var j=i+1;j<it.length&&it[j].s<it[i].e;j++)out.push([it[i],it[j]]);
+  return out;
+}
+function pairLine(p){
+  var a=p[0],b=p[1];
+  return '<li>'+esc(a.o.title)+' ('+esc(a.txt||hhmm(a.s))+') bentrok dengan '+esc(b.o.title)+' ('+esc(b.txt||hhmm(b.s))+')</li>';
+}
+function conflictBanner(d){
+  var cp=conflictPairs(timedItems(d));
+  if(!cp.length)return '';
+  return '<div class="cwarn"><b>'+cp.length+' bentrokan jadwal</b><ul>'+cp.map(pairLine).join('')+'</ul>'+(UI.agView==='chart'?'':'<button class="link" data-act="chartDay" data-date="'+d+'">Lihat bagan</button>')+'</div>';
+}
+function gLabel(it,small){
+  var o=it.o,act=it.k==='e'?'editEvent':'editTask';
+  return '<button class="gl" data-act="'+act+'" data-id="'+o.id+'" data-date="'+o.date+'"><span>'+esc(o.title)+'</span><small>'+small+'</small></button>';
+}
+function chartDayBody(d){
+  var items=timedItems(d),pairs=conflictPairs(items),bad={};
+  pairs.forEach(function(p){bad[p[0].k+p[0].o.id]=1;bad[p[1].k+p[1].o.id]=1});
+  var un=dayItems(d).filter(function(x){return !x.t}),hs=S.habits.filter(function(x){return x.created<=d});
+  var h=pairs.length?'<div class="cwarn"><b>'+pairs.length+' bentrokan jadwal</b><ul>'+pairs.map(pairLine).join('')+'</ul></div>':'<div class="cok">Tidak ada bentrokan jadwal pada hari ini.</div>';
+  if(items.length){
+    var minS=Math.min.apply(null,items.map(function(x){return x.s})),maxE=Math.max.apply(null,items.map(function(x){return x.e}));
+    var h0=Math.max(0,Math.min(6,Math.floor(minS/60))),h1=Math.min(24,Math.max(22,Math.ceil(maxE/60))),span=(h1-h0)*60;
+    var ticks='';
+    for(var hh=h0;hh<h1;hh+=2)ticks+='<span class="gtick" style="left:'+((hh-h0)*60/span*100)+'%">'+pad(hh)+'</span>';
+    var rows='<div class="gr"><div class="gl"><small>Jam</small></div><div class="gk ticks">'+ticks+'</div></div>';
+    items.forEach(function(it){
+      var isBad=!!bad[it.k+it.o.id],c=it.k==='e'?col(it.o.color):(goalColor(it.o)||'var(--accent)');
+      var left=(it.s-h0*60)/span*100,w=Math.max(2.5,(it.e-it.s)/span*100);
+      rows+='<div class="gr">'+gLabel(it,esc(it.txt)+(isBad?' <span class="cf">Bentrok</span>':''))+'<div class="gk grid" style="--n:'+(h1-h0)+'"><i class="gbar'+(isBad?' bad':'')+((it.k==='t'&&it.o.done)?' dim':'')+'" style="--c:'+c+';left:'+left+'%;width:'+w+'%"></i></div></div>';
+    });
+    h+=secHead('Bagan jadwal per jam','','')+'<div class="gw"><div class="gt">'+rows+'</div></div>';
+  }
+  if(un.length||hs.length){
+    var r2='';
+    un.forEach(function(x){
+      var o=x.o,c=x.k==='e'?col(o.color):(goalColor(o)||'var(--accent)');
+      var small=x.k==='e'?'Seharian':(o.span?'Hari '+o.span.i+' dari '+o.span.n:'Tanpa jam');
+      r2+='<div class="gr">'+gLabel(x,small)+'<div class="gk"><i class="gbar full'+((x.k==='t'&&o.done)?' dim':'')+'" style="--c:'+c+'"></i></div></div>';
+    });
+    hs.forEach(function(x){
+      var on=!!x.log[d],small=x.perWeek?weekCount(x)+'/'+x.perWeek+' minggu ini':(on?'Selesai':'Belum');
+      r2+='<div class="gr"><button class="gl" data-act="toggleHabit" data-id="'+x.id+'" data-date="'+d+'"><span>'+esc(x.title)+'</span><small>Kebiasaan, '+small+'</small></button><div class="gk"><i class="gbar full'+(on?'':' off')+'" style="--c:'+col(x.color)+'"></i></div></div>';
+    });
+    h+=secHead('Seharian dan tanpa jam','','')+'<div class="gw"><div class="gt">'+r2+'</div></div><p class="hint">Ketuk nama kebiasaan untuk mencentangnya.</p>';
+  }
+  if(!items.length&&!un.length&&!hs.length)h+='<div class="empty"><p>Belum ada rencana di hari ini.</p></div>';
+  return h+addButtons(d);
+}
+function chartRange(){
+  var d=UI.agDay,sc=UI.agScale||'week';
+  if(sc==='day')return [d,d];
+  if(sc==='week'){var ws=weekStart(d);return [ws,addDays(ws,6)]}
+  var ym=d.slice(0,7);return [ym+'-01',ym+'-'+pad(daysInMonth(ym))];
+}
+function chartPeriodBody(a,b,scale){
+  var days=[],td=TODAY();
+  for(var d=a;d<=b;d=addDays(d,1))days.push(d);
+  var n=days.length,W=scale==='month'?28:30;
+  var loads=days.map(function(d){
+    return {d:d,ev:eventsOn(d).length,tk:tasksOn(d).length,hb:S.habits.filter(function(x){return x.created<=d&&!x.perWeek}).length,pairs:conflictPairs(timedItems(d))};
+  });
+  var m=Math.max(1,loads.reduce(function(a,l){return Math.max(a,l.ev+l.tk+l.hb)},0)),U=Math.min(16,80/m);
+  var hdr='<div class="gr"><div class="gl"><small>Tanggal</small></div><div class="gk cells" style="min-width:'+(n*W)+'px">'+days.map(function(d){
+    return '<div class="gcell'+(d===td?' today':'')+'"><span>'+DAY3[pd(d).getDay()]+'</span><b>'+pd(d).getDate()+'</b></div>';
+  }).join('')+'</div></div>';
+  var bars='<div class="gr"><div class="gl"><span>Beban harian</span><small>acara, tugas, kebiasaan</small></div><div class="gk cells bars" style="min-width:'+(n*W)+'px">'+loads.map(function(l){
+    var tot=l.ev+l.tk+l.hb,cf=l.pairs.length;
+    var lab=fmtDay(l.d)+': '+l.ev+' acara, '+l.tk+' tugas, '+l.hb+' kebiasaan'+(cf?', '+cf+' bentrokan':'');
+    return '<button class="vb'+(l.d===td?' today':'')+'" data-act="chartDay" data-date="'+l.d+'" aria-label="'+lab+'">'+
+      (cf?'<i class="vflag">!</i>':'')+(tot?'<span class="vtot">'+tot+'</span>':'')+
+      '<span class="vstack">'+(l.hb?'<i style="height:'+(l.hb*U)+'px;background:'+COLORS.green+'"></i>':'')+(l.tk?'<i style="height:'+(l.tk*U)+'px;background:'+COLORS.teal+'"></i>':'')+(l.ev?'<i style="height:'+(l.ev*U)+'px;background:'+COLORS.orange+'"></i>':'')+'</span></button>';
+  }).join('')+'</div></div>';
+  function geom(s,e){
+    s=s>a?s:a;e=e<b?e:b;
+    return 'left:'+(diffDays(a,s)/n*100)+'%;width:'+((diffDays(s,e)+1)/n*100)+'%';
+  }
+  var rt=S.tasks.filter(function(t){return !t.repeat&&t.endDate&&t.endDate>t.date&&t.date<=b&&(t.done?(t.doneAt||t.endDate):t.endDate)>=a}).slice(0,20);
+  var rg=S.goals.filter(function(g){return (g.start||g.deadline)&&goalActive(g,a,b)}).slice(0,20);
+  var rr='';
+  if(rt.length||rg.length){
+    rr+='<div class="gr sep"><div class="gl">Rentang</div><div class="gk" style="min-width:'+(n*W)+'px"></div></div>';
+    rt.forEach(function(t){
+      var e=t.done?(t.doneAt||t.endDate):t.endDate,c=goalColor(t)||'var(--accent)';
+      rr+='<div class="gr"><button class="gl" data-act="editTask" data-id="'+t.id+'" data-date="'+t.date+'"><span>'+esc(t.title)+'</span><small>'+fmtShort(t.date)+' – '+fmtShort(t.endDate)+(t.done?', selesai':'')+'</small></button><div class="gk grid" style="--n:'+n+';min-width:'+(n*W)+'px"><i class="gbar'+(t.done?' dim':'')+'" style="--c:'+c+';'+geom(t.date,e)+'"></i></div></div>';
+    });
+    rg.forEach(function(g){
+      var st=g.start||g.created||a,en=g.deadline||b,p=goalProgress(g).p;
+      rr+='<div class="gr"><button class="gl" data-act="editGoal" data-id="'+g.id+'"><span>'+esc(g.title)+'</span><small>Target, '+Math.round(p*100)+'%</small></button><div class="gk grid" style="--n:'+n+';min-width:'+(n*W)+'px"><i class="gbar" style="--c:'+col(g.color)+';'+geom(st,en)+'"><b style="width:'+(p*100)+'%"></b></i></div></div>';
+    });
+  }
+  var legend='<div class="legend"><span style="--c:'+COLORS.orange+'">Acara</span><span style="--c:'+COLORS.teal+'">Tugas</span><span style="--c:'+COLORS.green+'">Kebiasaan</span><span style="--c:var(--danger)">Ada bentrok (!)</span></div>';
+  var h=legend+'<div class="gw"><div class="gt" style="min-width:'+(112+n*W)+'px">'+hdr+bars+rr+'</div></div><p class="hint">Ketuk sebuah batang untuk melihat rincian jamnya.</p>';
+  var withCf=loads.filter(function(l){return l.pairs.length});
+  if(withCf.length){
+    h+=secHead('Bentrokan ('+withCf.reduce(function(x,l){return x+l.pairs.length},0)+')','','')+withCf.map(function(l){
+      return '<div class="cwarn"><b>'+fmtDay(l.d)+'</b><ul>'+l.pairs.map(pairLine).join('')+'</ul><button class="link" data-act="chartDay" data-date="'+l.d+'">Lihat per jam</button></div>';
+    }).join('');
+  }else h+='<div class="cok">Tidak ada bentrokan jadwal pada periode ini.</div>';
+  return h;
+}
+function agChartBody(){
+  var sc=UI.agScale||'week',r=chartRange();
+  return sc==='day'?chartDayBody(r[0]):chartPeriodBody(r[0],r[1],sc);
+}
+
 function vAgenda(){
   var v=UI.agView||'month';
-  return agHeader(v)+(v==='week'?agWeekBody():v==='day'?agDayBody():agMonthBody());
+  return agHeader(v)+(v==='chart'?agChartBody():v==='week'?agWeekBody():v==='day'?agDayBody():agMonthBody());
 }
 
 
@@ -1413,7 +1589,7 @@ function sampleData(){
       T(1,'Revisi bagian metode',g1,'10:00',false),T(2,'Jalan pagi 5 km',g2,'06:00',false),T(3,'Kirim draf ke pembimbing',g1,'',false),T(4,'Ikuti tes latihan',g3,'',false),review,analysis
     ],
     habits:[Hb('Tulis 500 kata','purple',g1,0,0),Hb('Olahraga 30 menit','green',g2,1,3),Hb('Latihan bahasa Inggris','blue',g3,2,0),Hb('Tidur sebelum jam 23.00','orange','',3,0)],
-    events:[E(0,'Bimbingan dengan dosen','13:00','14:00','teal',g1,'Zoom: https://zoom.us/j/1234567890 (dengan Dr. Ahmad)'),E(1,'Makan malam keluarga','18:30','','pink'),E(2,'Kelas bahasa Inggris','19:00','20:30','blue',g3),E(5,'Seminar proposal','09:00','11:00','red',g1,'Ruang sidang lantai 2, Gedung B'),meet],
+    events:[E(0,'Bimbingan dengan dosen','13:00','14:00','teal',g1,'Zoom: https://zoom.us/j/1234567890 (dengan Dr. Ahmad)'),E(0,'Diskusi tim penelitian','13:30','14:30','red',g1,'Ruang rapat 3'),E(1,'Makan malam keluarga','18:30','','pink'),E(2,'Kelas bahasa Inggris','19:00','20:30','blue',g3),E(5,'Seminar proposal','09:00','11:00','red',g1,'Ruang sidang lantai 2, Gedung B'),meet],
     notes:notes,settings:{}
   };
 }
@@ -1501,12 +1677,16 @@ var A={
       UI.agMonth=addMonth(UI.agMonth,n);
       UI.agDay=UI.agMonth===TODAY().slice(0,7)?TODAY():UI.agMonth+'-01';
     }else{
-      UI.agDay=addDays(UI.agDay,v==='week'?7*n:n);
+      var sc=v==='chart'?(UI.agScale||'week'):v;
+      if(sc==='month'){var ym=addMonth(UI.agDay.slice(0,7),n);UI.agDay=ym===TODAY().slice(0,7)?TODAY():ym+'-01'}
+      else UI.agDay=addDays(UI.agDay,sc==='week'?7*n:n);
       UI.agMonth=UI.agDay.slice(0,7);
       if(v==='day')UI.agFocus=true;
     }
     render();
   },
+  agScale:function(el){UI.agScale=el.dataset.v;UI.agMonth=UI.agDay.slice(0,7);render()},
+  chartDay:function(el){UI.agDay=el.dataset.date;UI.agMonth=UI.agDay.slice(0,7);UI.agView='chart';UI.agScale='day';window.scrollTo(0,0);render()},
   rcView:function(el){UI.rcView=el.dataset.v;render()},
   rcNav:function(el){
     var n=Number(el.dataset.n),v=UI.rcView;
